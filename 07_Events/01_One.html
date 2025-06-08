@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photo" src="https://wallpapercave.com/wp/wp2619636.jpg" alt=""></li>
+        </ul>
+        <ul id="images">
+            <li><img width="200px" id="photo1" src="https://images.pexels.com/photos/1387037/pexels-photo-1387037.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></li>
+        </ul>
+        <ul id="images">
+            <li><img width="200px" id="photo2" src="https://images.pexels.com/photos/709143/pexels-photo-709143.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></li>
+        </ul>
+        <ul id="images">
+            <li><img width="200px" id="photo3" src="https://images.pexels.com/photos/1036403/pexels-photo-1036403.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" 
+                
+                ></li>  
+                <!-- onclick="alert('photo3')" -->
+        </ul>
+        <ul id="images">
+            <li><img width="200px" id="photo4" src="https://images.pexels.com/photos/33930/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" alt=""></li>
+        </ul>
+        <li><a style="color: aliceblue" href="https://www.pexels.com/" id="pexels">Pexels</a></li>
+    </div>
+</body>
+<script>
+    //document.getElementById('photo3').onclick = function(){
+    //    alert("photo3 clicked")
+    //}
+
+    //document.getElementById('photo3').addEventListener('click', function(){
+    //    alert("photo clicked")
+    //})
+
+    // attachEvent()
+    // jQuery - on
+
+
+        // type ,timestap, defaultPrevented
+        // target, toElement, srcElement, currentTarget
+        // clientX, clientY, screenX, screenY
+        // altkey, ctrlkey, shiftkey, KeyCode
+
+    document.getElementById('images').addEventListener('click', function(e){
+        //console.log("clicked inside the ul");
+    }, false)
+
+    document.getElementById('photo3').addEventListener('click', function(e){
+        //console.log("photo3 clicked");
+        e.stopPropagation()
+    }, false)
+    document.getElementById('pexels').addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        //console.log("pexels clicked")
+    },false)
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.parentNode);
+        let removeIt = e.target.parentNode
+        //removeIt.remove()
+        removeIt.parentNode.removeChild(removeIt)
+    })
+</script>
+</html>
